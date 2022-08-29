@@ -18,7 +18,7 @@
 
     <header>
         <div class="container-fluid">
-<!--            Navbar Start -->
+            <!--            Navbar Start -->
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#">PHP-AJAX-FETCH</a>
@@ -27,12 +27,13 @@
                     </button>
                 
 
+
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="#">Home</a>
                             </li>
-<!--
+                            <!--
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Link</a>
                             </li>
@@ -45,16 +46,84 @@
                     </div>
                 </div>
             </nav>
-<!--            Navbar End -->
-            
-            <h1 class="text-center text-decoration-underline">Students List</h1>
-            <hr>
-            <button type="button" class="btn btn-primary float-end mx-5">Add Student</button>
-            
-            
+            <!--            Navbar End -->
         </div>
-
     </header>
+
+    <div class="container">
+        <h1 class="text-center text-decoration-underline">Students List</h1>
+        <hr>
+        <button type="button" class="btn btn-primary float-end mx-5">Add Student</button>
+        <br><br>
+        <hr>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">S/N</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Class</th>
+                    <th scope="col">City</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">View</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>
+                        <select class="form-select">
+                            <option value="0" disabled selected>Select Class</option>
+                            <option value="0">BCA</option>
+                            <option value="0">BSc</option>
+                            <option value="0">BCom</option>
+                            <option value="0">BA</option>
+                        </select>
+                    </td>
+                    <td>@mdo</td>
+                    <td><button class="btn btn-warning">Edit</button></td>
+                    <td><button class="btn btn-info">View</button></td>
+                    <td><button class="btn btn-danger">Delete</button></td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Mark</td>
+                    <td>
+                        <select class="form-select">
+                            <option value="0" disabled selected>Select Class</option>
+                            <option value="0">BCA</option>
+                            <option value="0">BSc</option>
+                            <option value="0">BCom</option>
+                            <option value="0">BA</option>
+                        </select>
+                    </td>
+                    <td>@mdo</td>
+                    <td><button class="btn btn-warning">Edit</button></td>
+                    <td><button class="btn btn-info">View</button></td>
+                    <td><button class="btn btn-danger">Delete</button></td>
+                </tr> 
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Mark</td>
+                    <td>
+                        <select class="form-select">
+                            <option value="0" disabled selected>Select Class</option>
+                            <option value="0">BCA</option>
+                            <option value="0">BSc</option>
+                            <option value="0">BCom</option>
+                            <option value="0">BA</option>
+                        </select>
+                    </td>
+                    <td>@mdo</td>
+                    <td><button class="btn btn-warning">Edit</button></td>
+                    <td><button class="btn btn-info">View</button></td>
+                    <td><button class="btn btn-danger">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
 
 
