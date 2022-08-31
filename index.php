@@ -53,11 +53,12 @@
     <div class="container">
         <h1 class="text-center text-decoration-underline">Students List</h1>
         <hr>
-        <button type="button" class="btn btn-primary float-end mx-5">Add Student</button>
+        <button type="button" class="btn btn-primary float-end mx-5" onclick="addNewModal()">Add Student</button>
         <br><br>
         <hr>
 
-        <table class="table">
+        <div class="table-data">
+            <table class="table table-hover table-striped">
             <thead>
                 <tr>
                     <th scope="col">S/N</th>
@@ -69,10 +70,10 @@
                     <th scope="col">Delete</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="tbody">
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
+                    <th scope="row" class="text-center">1</th>
+                    <td>Varun</td>
                     <td>
                         <select class="form-select">
                             <option value="0" disabled selected>Select Class</option>
@@ -82,14 +83,14 @@
                             <option value="0">BA</option>
                         </select>
                     </td>
-                    <td>@mdo</td>
+                    <td>Ranchi</td>
                     <td><button class="btn btn-warning">Edit</button></td>
                     <td><button class="btn btn-info">View</button></td>
                     <td><button class="btn btn-danger">Delete</button></td>
                 </tr>
                 <tr>
-                    <th scope="row">2</th>
-                    <td>Mark</td>
+                    <th scope="row" class="text-center">2</th>
+                    <td>Rohan</td>
                     <td>
                         <select class="form-select">
                             <option value="0" disabled selected>Select Class</option>
@@ -99,14 +100,14 @@
                             <option value="0">BA</option>
                         </select>
                     </td>
-                    <td>@mdo</td>
+                    <td>Bokaro</td>
                     <td><button class="btn btn-warning">Edit</button></td>
                     <td><button class="btn btn-info">View</button></td>
                     <td><button class="btn btn-danger">Delete</button></td>
                 </tr> 
                 <tr>
-                    <th scope="row">3</th>
-                    <td>Mark</td>
+                    <th scope="row" class="text-center">3</th>
+                    <td>Raju</td>
                     <td>
                         <select class="form-select">
                             <option value="0" disabled selected>Select Class</option>
@@ -116,13 +117,86 @@
                             <option value="0">BA</option>
                         </select>
                     </td>
-                    <td>@mdo</td>
-                    <td><button class="btn btn-warning">Edit</button></td>
-                    <td><button class="btn btn-info">View</button></td>
-                    <td><button class="btn btn-danger">Delete</button></td>
+                    <td>Dhanbad</td>
+                    <td width="90px"><button class="btn btn-warning">Edit</button></td>
+                    <td width="90px"><button class="btn btn-info">View</button></td>
+                    <td width="90px"><button class="btn btn-danger">Delete</button></td>
                 </tr>
             </tbody>
         </table>
+        </div>
+        
+        <div class="alert alert-success" role="alert" id="success-message">
+          A simple success alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+        </div>
+        <div class="alert alert-danger" role="alert" id="error-message">
+          A simple danger alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+        </div>
+    </div>
+    
+      <!-- modal for show add new -->
+    
+    <div id="addModal">
+        <div id="modal-form">
+            <h2 class="text-center text-decoration-underline">Add New Form</h2>
+            <form method="POST" id="addModal-form">
+                <div class="mb-3">
+                  <label for="fname" class="form-label">First Name</label>
+                  <input type="text" class="form-control" id="fname">
+                </div>
+                <div class="mb-3">
+                  <label for="lname" class="form-label">Last Name</label>
+                  <input type="text" class="form-control" id="lname">
+                </div>
+                <label class="form-label">Class</label>
+                <select class="form-select" id="classlist">
+                  <option selected>Select Class</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+                <div class="mb-3">
+                  <label for="city" class="form-label">City</label>
+                  <input type="text" class="form-control" id="city">
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary" id="new-submit" onclick="submit_data()">Submit</button>
+                </div>
+            </form>
+            <div id="close-btn" onClick="hide_modal()">X</div>
+        </div>
+    </div>
+    
+      <!-- modal for show edit --> 
+    <div id="modal">
+        <div id="modal-form">
+            <h2 class="text-center text-decoration-underline">Edit Form</h2>
+            <form method="POST">
+                <div class="mb-3">
+                  <label for="edit-fname" class="form-label">First Name</label>
+                  <input type="text" class="form-control" id="edit-fname">
+                </div>
+                <div class="mb-3">
+                  <label for="edit-lname" class="form-label">Last Name</label>
+                  <input type="text" class="form-control" id="edit-lname">
+                </div>
+                <label for="lname" class="form-label">Class</label>
+                <select class="form-select" id="edit-class">
+                  <option selected>Select Class</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+                <div class="mb-3">
+                  <label for="edit-city" class="form-label">City</label>
+                  <input type="text" class="form-control" id="edit-city">
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary" onClick="update_data()" id="update_data">Update</button>
+                </div>
+            </form>
+            <div id="close-btn" onClick="hide_modal()">X</div>
+        </div>
     </div>
 
 

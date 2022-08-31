@@ -8,3 +8,13 @@ links.forEach((link) => {
     });
 });
 
+
+//function for load student record in table on page load 
+function loadData()
+{
+    fetch('php/load-data.php')
+    .then( (response) => response.json())
+    .then( (data) => {
+        
+    })
+}

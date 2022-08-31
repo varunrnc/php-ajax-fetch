@@ -1,0 +1,66 @@
+
+.container {
+    position: relative;
+}
+
+.table-data {
+    max-height: 500px;
+    overflow-y: scroll;
+}
+
+#modal,
+#addModal {
+    background: rgba(0,0,0,0.7);
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    display: none;
+}
+
+#modal-form {
+    background: #ffffff;
+    width: 40%;
+    position: relative;
+    top: 20%;
+    left: calc(50% - 15%);
+    padding: 15px;
+    border-radius: 4px;
+}
+
+#modal-form button {
+    margin: auto;
+    display: block;
+}
+
+#success-message,
+#error-message{
+    position: absolute;
+    top: 75px;
+    left: 30px;
+    z-index: 100;
+    display: none;
+}
+
+#close-btn {
+    background: #ff0000;
+    color: #ffffff;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 50%;
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    cursor: pointer;
+}
+
+@media only screen and (max-width:576px) {
+    #modal-form {
+        width: 90%;
+        left: calc(20% - 15%);
+    }
+}
