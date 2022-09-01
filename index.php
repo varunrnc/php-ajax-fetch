@@ -71,57 +71,7 @@
                 </tr>
             </thead>
             <tbody id="tbody">
-                <tr>
-                    <th scope="row" class="text-center">1</th>
-                    <td>Varun</td>
-                    <td>
-                        <select class="form-select">
-                            <option value="0" disabled selected>Select Class</option>
-                            <option value="0">BCA</option>
-                            <option value="0">BSc</option>
-                            <option value="0">BCom</option>
-                            <option value="0">BA</option>
-                        </select>
-                    </td>
-                    <td>Ranchi</td>
-                    <td><button class="btn btn-warning">Edit</button></td>
-                    <td><button class="btn btn-info">View</button></td>
-                    <td><button class="btn btn-danger">Delete</button></td>
-                </tr>
-                <tr>
-                    <th scope="row" class="text-center">2</th>
-                    <td>Rohan</td>
-                    <td>
-                        <select class="form-select">
-                            <option value="0" disabled selected>Select Class</option>
-                            <option value="0">BCA</option>
-                            <option value="0">BSc</option>
-                            <option value="0">BCom</option>
-                            <option value="0">BA</option>
-                        </select>
-                    </td>
-                    <td>Bokaro</td>
-                    <td><button class="btn btn-warning">Edit</button></td>
-                    <td><button class="btn btn-info">View</button></td>
-                    <td><button class="btn btn-danger">Delete</button></td>
-                </tr> 
-                <tr>
-                    <th scope="row" class="text-center">3</th>
-                    <td>Raju</td>
-                    <td>
-                        <select class="form-select">
-                            <option value="0" disabled selected>Select Class</option>
-                            <option value="0">BCA</option>
-                            <option value="0">BSc</option>
-                            <option value="0">BCom</option>
-                            <option value="0">BA</option>
-                        </select>
-                    </td>
-                    <td>Dhanbad</td>
-                    <td width="90px"><button class="btn btn-warning">Edit</button></td>
-                    <td width="90px"><button class="btn btn-info">View</button></td>
-                    <td width="90px"><button class="btn btn-danger">Delete</button></td>
-                </tr>
+               
             </tbody>
         </table>
         </div>
@@ -150,10 +100,7 @@
                 </div>
                 <label class="form-label">Class</label>
                 <select class="form-select" id="classlist">
-                  <option selected>Select Class</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  
                 </select>
                 <div class="mb-3">
                   <label for="city" class="form-label">City</label>
