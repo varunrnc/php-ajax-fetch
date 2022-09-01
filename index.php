@@ -76,12 +76,8 @@
         </table>
         </div>
         
-        <div class="alert alert-success" role="alert" id="success-message">
-          A simple success alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
-        </div>
-        <div class="alert alert-danger" role="alert" id="error-message">
-          A simple danger alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
-        </div>
+        <div class="alert alert-success" role="alert" id="success-message"></div>
+        <div class="alert alert-danger" role="alert" id="error-message"></div>
     </div>
     
       <!-- modal for show add new -->
@@ -121,7 +117,8 @@
             <form method="POST">
                 <div class="mb-3">
                   <label for="edit-fname" class="form-label">First Name</label>
-                  <input type="text" class="form-control" id="edit-fname">
+                    <input type="text" id="edit-id" hidden>
+                    <input type="text" class="form-control" id="edit-fname">
                 </div>
                 <div class="mb-3">
                   <label for="edit-lname" class="form-label">Last Name</label>
@@ -129,17 +126,14 @@
                 </div>
                 <label for="lname" class="form-label">Class</label>
                 <select class="form-select" id="edit-class">
-                  <option selected>Select Class</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  
                 </select>
                 <div class="mb-3">
                   <label for="edit-city" class="form-label">City</label>
                   <input type="text" class="form-control" id="edit-city">
                 </div>
                 <div class="mb-3">
-                    <button type="submit" class="btn btn-primary" onClick="update_data()" id="update_data">Update</button>
+                    <button type="button" class="btn btn-primary" onclick="modify_data()" id="update_data">Update</button>
                 </div>
             </form>
             <div id="close-btn" onClick="hide_modal()">X</div>

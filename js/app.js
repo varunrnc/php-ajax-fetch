@@ -35,7 +35,7 @@ function loadData()
         }
     })
     .catch( (error) => {
-        show_message("error", "Can't fatch data.");
+        show_message('error', "Can't fatch data.");
     });
 }
 
@@ -59,7 +59,7 @@ function addNewModal()
         select.innerHTML = option;
     })
     .catch((error) => {
-       show_message("error", "Can't Fetch Class List") ;
+       show_message('error', "Can't Fetch Class List");
     });
 }
 
@@ -75,4 +75,199 @@ function hide_modal()
 }
 
 
+//Add Student Record 
+
+function submit_data()
+{
+    var fname = document.getElementById('fname').value;
+    var lname = document.getElementById('lname').value;
+    var sClass = document.getElementById('classlist').value;
+    var city = document.getElementById('city').value;
+    
+    if(fname == '' || lname == '' || sClass == '0' || city == '') {
+        alert("Please fill all the fields!");
+        return false;
+    } else {
+        var formData = {
+            'fname' : fname,
+            'lname' : lname,
+            'class' : sClass,
+            'city' : city
+        }
+        
+        jsonData = JSON.stringify(formData);
+        
+        fetch('php/insert.php',{
+            method : 'POST',
+            body : jsonData,
+            headers : {
+                'Content-Type' : 'application/json'
+            }
+        })
+        .then((response) => response.json())
+        .then((result) => {
+            if(result.insert == 'success') {
+                 hide_modal();
+                loadData();
+                show_message('success', 'Data Saved Successfully.');
+//                document.getElementById('addModal-form').reset();
+            } else {
+                show_message('error',"Data Can't Inserted.");
+				hide_modal();
+            }
+        })
+        .catch((error) => {
+            show_message('error', "Data not Inserted!");
+        });
+    }
+}
+
+//Open Update Modal Box and Show Student record in it. 
+
+function editRecord(id)
+{
+    var editModal = document.getElementById("modal");
+    editModal.style.display = 'block';
+    
+    fetch('php/fetch-edit.php?editId=' + id)
+    .then((response) => response.json())
+    .then((data) => {
+        var option = '';
+       
+        for(var i in data["response"]) {
+            document.getElementById("edit-id").value = data["response"][i].id;
+            document.getElementById("edit-fname").value = data["response"][i].first_name;
+            document.getElementById("edit-lname").value = data["response"][i].last_name;
+            document.getElementById("edit-city").value = data["response"][i].city;
+            
+            var selected = '';
+            for(var j in data['class']) {
+                if(data['class'][j].cid == data["response"][i].id) {
+                    selected = 'selected';
+                } else {
+                    selected = '';
+                }
+                option += `<option ${selected} value='${data['class'][j].cid}'>${data['class'][j].class_name}</option>`;
+            }
+            
+            document.getElementById("edit-class").innerHTML = option;
+        } 
+        
+     /*   var option = '';
+		for(var i in data['response']){
+			document.getElementById('edit-id').value = data['response'][i].id;
+			document.getElementById('edit-fname').value = data['response'][i].first_name;
+			document.getElementById('edit-lname').value = data['response'][i].last_name;
+			document.getElementById('edit-city').value = data['response'][i].city;
+
+			var selected = '';
+			for(var j in data['class']){
+				if(data['class'][j].cid === data['response'][i].id){
+					selected = 'selected';
+				}else{
+					selected = '';
+				}
+				option += `<option ${selected} value="${data['class'][j].cid}">${data['class'][j].class_name}</option>`;
+			}
+
+			document.getElementById('edit-class').innerHTML = option;
+		}
+        */
+    })
+    .catch((error) => {
+        show_message('error', "Can't Fetch Data");
+    });
+}
+
+//Updata Student Record 
+
+function modify_data() {
+    var id = document.getElementById('edit-id').value;
+    var fname = document.getElementById('edit-fname').value;
+    var lname = document.getElementById('edit-lname').value;
+    var sClass = document.getElementById('edit-class').value;
+    var city = document.getElementById('edit-city').value;
+    
+     console.log(id);
+    
+    if(fname == '' || lname == '' || sClass == '0' || city == '') {
+        alert("Please fill all fields ");
+        return false;
+    } else {
+        var formData = {
+            's_id' : id,
+            'fname' : fname,
+            'lname' : lname,
+            'class' : sClass,
+            'city' : city
+        }
+        
+        jsonData = JSON.stringify(formData);
+       
+        fetch('php/update.php', {
+            method : 'PUT',
+            body : jsonData,
+            headers : {
+                'Content-type' : 'application/json'
+            }
+        })
+        .then((response) => response.json())
+        .then((result) => {
+            if(result.update == 'success') {
+                show_message('success', 'Data Updated Successfully.');
+                loadData();
+                hide_modal();
+            } else {
+                show_message('error', "Data Can't Updated.");
+                hide_modal();
+            }
+        })
+        .catch((error) => {
+            show_message('error', "Data Can't Updated : Server Problem.");
+        });
+    }
+}
+
+
+//Delete Record 
+function deleteRecord(id)
+{
+    if(confirm("Are you sure want to Delete this record?")) {
+        fetch('php/delete.php?delId=' + id, {
+            method : "DELETE"
+        })
+        .then((response) => response.json())
+        .then((result) => {
+            if(result.delete == 'success') {
+                show_message('success', 'Record Deleted Successfully.');
+                loadData();
+            } else {
+                show_message('error', "Can't Delete Record");
+            }
+        })
+        .catch((error) => {
+            show_message('error', 'Data not deleted') ;
+        });
+    }
+}
+
+
+
+
+// Show error / success message 
+
+function show_message(type, message)
+{
+    if(type == 'error'){
+        var message_box = document.getElementById('error-message');
+    } else {
+        var message_box = document.getElementById('success-message');
+    }
+    
+    message_box.innerHTML = message;
+    message_box.style.display = "block";
+    setTimeout(function(){
+        message_box.style.display = "none";
+    },3000);
+}
 

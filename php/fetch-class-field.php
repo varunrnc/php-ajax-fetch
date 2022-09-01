@@ -3,7 +3,7 @@ include_once('config.php');
 
 $sql = "SELECT * FROM class";
 
-$result = $conn->query($sql) or die("Query Failed: " . $conn->error($sql));
+$result = $conn->query($sql) or die("Query Failed:");
 $output = [];
 
 if($result->num_rows > 0) {

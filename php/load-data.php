@@ -3,7 +3,7 @@ include_once('config.php');
 
 $sql = "SELECT students.id, students.first_name, students.last_name, students.city, class.class_name FROM students LEFT JOIN class ON class.cid = students.class";
 
-$result = $conn->query($sql) or die("Query Failed: " . $conn->error($sql));
+$result = $conn->query($sql) or die("Query Failed: ");
 $output = [];
 
 if($result->num_rows > 0)
