@@ -145,19 +145,19 @@
             <form method="POST">
                 <div class="mb-3">
                   <label for="view-fname" class="form-label">First Name</label>
-                    <input type="text" class="form-control" id="view-fname">
+                    <input type="text" class="form-control" id="view-fname" readonly>
                 </div>
                 <div class="mb-3">
                   <label for="view-lname" class="form-label">Last Name</label>
-                  <input type="text" class="form-control" id="view-lname">
+                  <input type="text" class="form-control" id="view-lname" readonly>
                 </div>
-                <label for="lname" class="form-label">Class</label>
+                <label for="view-class" class="form-label">Class</label>
                 <select class="form-select" id="view-class">
                   
                 </select>
                 <div class="mb-3">
                   <label for="view-city" class="form-label">City</label>
-                  <input type="text" class="form-control" id="view-city">
+                  <input type="text" class="form-control" id="view-city" readonly>
                 </div>
                 <div class="mb-3">
                     <button type="button" class="btn btn-danger" onclick="hide_modal()" id="close_btn">Close</button>

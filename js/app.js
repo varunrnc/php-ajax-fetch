@@ -135,7 +135,7 @@ function editRecord(id)
             
             var selected = '';
             for(var j in data['class']) {
-                if(data['class'][j].cid == data["response"][i].id) {
+                if(data['class'][j].cid == data["response"][i].class) {
                     selected = 'selected';
                 } else {
                     selected = '';
@@ -209,7 +209,26 @@ function viewRecord(id) {
     .then((response) => response.json())
     .then((data) => {
         var option = '';
+        for(var i in data['response']) {
+            document.getElementById("view-fname").value = data['response'][i].first_name;
+            document.getElementById("view-lname").value = data['response'][i].last_name;            
+            document.getElementById("view-city").value = data['response'][i].city;
+            
+            var selected = '';
+            for(var j in data['class']) {
+                if(data['class'][j].cid == data['response'][i].class) {
+                    selected = 'selected';
+                } else {
+                    selected = '';
+                }
+                option += `<option ${selected} disabled value="${data['class'][j].cid}">${data['class'][j].class_name}</option>`;
+            }
+            document.getElementById("view-class").innerHTML = option;
+        }
     })
+    .catch((error) => {
+        show_message('error', "Data can't fetch");
+    });
 }
 
 
