@@ -8,8 +8,9 @@
     overflow-y: scroll;
 }
 
+#viewModal,
 #modal,
-#addModal {
+#addModal{
     background: rgba(0,0,0,0.7);
     position: fixed;
     left: 0;

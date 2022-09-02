@@ -21,5 +21,4 @@ if($result) {
 }
 
 
-$conn->close();
 ?>

@@ -40,8 +40,7 @@
 -->
                         </ul>
                         <form class="d-flex">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
+                            <input class="form-control me-2" type="text" placeholder="Search" id="search" onKeyUp="loadSearch()">
                         </form>
                     </div>
                 </div>
@@ -134,6 +133,34 @@
                 </div>
                 <div class="mb-3">
                     <button type="button" class="btn btn-primary" onclick="modify_data()" id="update_data">Update</button>
+                </div>
+            </form>
+            <div id="close-btn" onClick="hide_modal()">X</div>
+        </div>
+    </div>
+    
+    <div id="viewModal">
+        <div id="modal-form">
+            <h2 class="text-center text-decoration-underline">View Form</h2>
+            <form method="POST">
+                <div class="mb-3">
+                  <label for="view-fname" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="view-fname">
+                </div>
+                <div class="mb-3">
+                  <label for="view-lname" class="form-label">Last Name</label>
+                  <input type="text" class="form-control" id="view-lname">
+                </div>
+                <label for="lname" class="form-label">Class</label>
+                <select class="form-select" id="view-class">
+                  
+                </select>
+                <div class="mb-3">
+                  <label for="view-city" class="form-label">City</label>
+                  <input type="text" class="form-control" id="view-city">
+                </div>
+                <div class="mb-3">
+                    <button type="button" class="btn btn-danger" onclick="hide_modal()" id="close_btn">Close</button>
                 </div>
             </form>
             <div id="close-btn" onClick="hide_modal()">X</div>

@@ -1,15 +1,5 @@
-/* Navbar Collapse */
-let links = document.querySelectorAll(".navbar-nav .nav-link");
-let navbar = document.querySelector(".navbar-collapse");
-
-links.forEach((link) => {
-    link.addEventListener('click', ()=> {
-        navbar.classList.remove("show");
-    });
-});
-
-
 //function for load student record in table on page load 
+
 function loadData()
 {
     fetch('php/load-data.php')
@@ -72,6 +62,9 @@ function hide_modal()
     
      var editModal = document.getElementById('modal');
     editModal.style.display = 'none';
+    
+    var viewModal = document.getElementById('viewModal');
+    viewModal.style.display = 'none';
 }
 
 
@@ -88,18 +81,18 @@ function submit_data()
         alert("Please fill all the fields!");
         return false;
     } else {
-        var formData = {
+        var objFormData = {
             'fname' : fname,
             'lname' : lname,
             'class' : sClass,
             'city' : city
         }
         
-        jsonData = JSON.stringify(formData);
+        jsonFormData = JSON.stringify(objFormData);
         
         fetch('php/insert.php',{
             method : 'POST',
-            body : jsonData,
+            body : jsonFormData,
             headers : {
                 'Content-Type' : 'application/json'
             }
@@ -107,10 +100,10 @@ function submit_data()
         .then((response) => response.json())
         .then((result) => {
             if(result.insert == 'success') {
-                 hide_modal();
-                loadData();
-                show_message('success', 'Data Saved Successfully.');
-//                document.getElementById('addModal-form').reset();
+                    show_message('success', 'Data Saved Successfully.');
+                    loadData();
+                    hide_modal();
+                    document.getElementById('addModal-form').reset();
             } else {
                 show_message('error',"Data Can't Inserted.");
 				hide_modal();
@@ -152,27 +145,6 @@ function editRecord(id)
             
             document.getElementById("edit-class").innerHTML = option;
         } 
-        
-     /*   var option = '';
-		for(var i in data['response']){
-			document.getElementById('edit-id').value = data['response'][i].id;
-			document.getElementById('edit-fname').value = data['response'][i].first_name;
-			document.getElementById('edit-lname').value = data['response'][i].last_name;
-			document.getElementById('edit-city').value = data['response'][i].city;
-
-			var selected = '';
-			for(var j in data['class']){
-				if(data['class'][j].cid === data['response'][i].id){
-					selected = 'selected';
-				}else{
-					selected = '';
-				}
-				option += `<option ${selected} value="${data['class'][j].cid}">${data['class'][j].class_name}</option>`;
-			}
-
-			document.getElementById('edit-class').innerHTML = option;
-		}
-        */
     })
     .catch((error) => {
         show_message('error', "Can't Fetch Data");
@@ -228,6 +200,19 @@ function modify_data() {
     }
 }
 
+// View Record Data
+function viewRecord(id) {
+    var viewModal = document.getElementById("viewModal");
+    viewModal.style.display = "block";
+    
+    fetch('php/view.php?vid=' + id)
+    .then((response) => response.json())
+    .then((data) => {
+        var option = '';
+    })
+}
+
+
 
 //Delete Record 
 function deleteRecord(id)
@@ -251,7 +236,42 @@ function deleteRecord(id)
     }
 }
 
+// Search Student Record
 
+function loadSearch()
+{
+    var search = document.getElementById('search').value;
+    if(search == ''){
+        loadData();
+        return false;
+    } else {
+        fetch('php/search.php?search=' + search)
+        .then((response) => response.json())
+        .then((data) => {
+            var tbody = document.getElementById("tbody");
+            if(data['empty']) {
+                tbody.innerHTML = `<tr><td colspan="6" align="center"><h3>No Record Found.</h3></td></tr>`
+            } else {
+                var tr = '';
+                for(var i in data) {
+                    tr += `<tr>
+                    <td align="center">${data[i].id}</td>
+                    <td>${data[i].first_name} ${data[i].last_name}</td>
+                    <td>${data[i].class_name}</td>
+                    <td>${data[i].city}</td>
+                    <td><button class="btn btn-warning" onclick="editRecord(${data[i].id})">Edit</button></td>
+                    <td><button class="btn btn-info" onclick="viewRecord(${data[i].id})">View</button></td>
+                    <td><button class="btn btn-danger" onclick="deleteRecord(${data[i].id})">Delete</button></td>
+                </tr>`;
+                }
+                tbody.innerHTML = tr;
+            }
+        })
+        .catch((error) => {
+            show_message('error', "Can't Search Data");
+        });
+    }
+}
 
 
 // Show error / success message 
