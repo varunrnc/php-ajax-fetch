@@ -1,3 +1,5 @@
+const submit_btn = document.getElementById("new-submit");
+
 //function for load student record in table on page load 
 
 function loadData()
@@ -69,9 +71,8 @@ function hide_modal()
 
 
 //Add Student Record 
-
-function submit_data()
-{
+submit_btn.addEventListener("click", (event) => {
+    event.preventDefault();
     var fname = document.getElementById('fname').value;
     var lname = document.getElementById('lname').value;
     var sClass = document.getElementById('classlist').value;
@@ -87,15 +88,14 @@ function submit_data()
             'class' : sClass,
             'city' : city
         }
-        
-        jsonFormData = JSON.stringify(objFormData);
-        
-        fetch('php/insert.php',{
-            method : 'POST',
-            body : jsonFormData,
-            headers : {
-                'Content-Type' : 'application/json'
-            }
+                
+        fetch('php/insert_data.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json', 
+            },
+            body: JSON.stringify(objFormData),
+            
         })
         .then((response) => response.json())
         .then((result) => {
@@ -113,7 +113,7 @@ function submit_data()
             show_message('error', "Data not Inserted!");
         });
     }
-}
+})
 
 //Open Update Modal Box and Show Student record in it. 
 
@@ -173,15 +173,13 @@ function modify_data() {
             'class' : sClass,
             'city' : city
         }
-        
-        jsonData = JSON.stringify(formData);
-       
+
         fetch('php/update.php', {
             method : 'PUT',
-            body : jsonData,
             headers : {
-                'Content-type' : 'application/json'
-            }
+                'Content-Type' : 'application/json',
+            },
+            body : JSON.stringify(formData)
         })
         .then((response) => response.json())
         .then((result) => {

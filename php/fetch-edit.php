@@ -14,7 +14,6 @@ if($result1->num_rows > 0) {
     }
 }
 
-
 $query2 = "SELECT * FROM class";
 $result2 = $conn->query($query2) or die("Query2 Failed!");
 
@@ -23,7 +22,6 @@ if($result2->num_rows > 0) {
         $output['class'][] = $row2;
     }
 }
-
 
 $conn->close();
 

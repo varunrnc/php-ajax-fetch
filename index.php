@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
@@ -23,10 +24,8 @@
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#">PHP-AJAX-FETCH</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                      <span class="navbar-toggler-icon"></span>
+                        <span class="navbar-toggler-icon"></span>
                     </button>
-                
-
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -37,7 +36,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Link</a>
                             </li>
--->
+                            -->
                         </ul>
                         <form class="d-flex">
                             <input class="form-control me-2" type="text" placeholder="Search" id="search" onKeyUp="loadSearch()">
@@ -58,78 +57,78 @@
 
         <div class="table-data">
             <table class="table table-hover table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">S/N</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Class</th>
-                    <th scope="col">City</th>
-                    <th scope="col">Edit</th>
-                    <th scope="col">View</th>
-                    <th scope="col">Delete</th>
-                </tr>
-            </thead>
-            <tbody id="tbody">
-               
-            </tbody>
-        </table>
+                <thead>
+                    <tr>
+                        <th scope="col">S/N</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Class</th>
+                        <th scope="col">City</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">View</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+
+                </tbody>
+            </table>
         </div>
-        
+
         <div class="alert alert-success" role="alert" id="success-message"></div>
         <div class="alert alert-danger" role="alert" id="error-message"></div>
     </div>
-    
-      <!-- modal for show add new -->
-    
+
+    <!-- modal for show add new -->
+
     <div id="addModal">
         <div id="modal-form">
             <h2 class="text-center text-decoration-underline">Add New Form</h2>
             <form method="POST" id="addModal-form">
                 <div class="mb-3">
-                  <label for="fname" class="form-label">First Name</label>
-                  <input type="text" class="form-control" id="fname">
+                    <label for="fname" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="fname">
                 </div>
                 <div class="mb-3">
-                  <label for="lname" class="form-label">Last Name</label>
-                  <input type="text" class="form-control" id="lname">
+                    <label for="lname" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="lname">
                 </div>
                 <label class="form-label">Class</label>
                 <select class="form-select" id="classlist">
-                  
+
                 </select>
                 <div class="mb-3">
-                  <label for="city" class="form-label">City</label>
-                  <input type="text" class="form-control" id="city">
+                    <label for="city" class="form-label">City</label>
+                    <input type="text" class="form-control" id="city">
                 </div>
                 <div class="mb-3">
-                    <button type="submit" class="btn btn-primary" id="new-submit" onclick="submit_data()">Submit</button>
+                    <button type="submit" class="btn btn-primary" id="new-submit">Submit</button>
                 </div>
             </form>
             <div id="close-btn" onClick="hide_modal()">X</div>
         </div>
     </div>
-    
-      <!-- modal for show edit --> 
+
+    <!-- modal for show edit -->
     <div id="modal">
         <div id="modal-form">
             <h2 class="text-center text-decoration-underline">Edit Form</h2>
             <form method="POST">
                 <div class="mb-3">
-                  <label for="edit-fname" class="form-label">First Name</label>
+                    <label for="edit-fname" class="form-label">First Name</label>
                     <input type="text" id="edit-id" hidden>
                     <input type="text" class="form-control" id="edit-fname">
                 </div>
                 <div class="mb-3">
-                  <label for="edit-lname" class="form-label">Last Name</label>
-                  <input type="text" class="form-control" id="edit-lname">
+                    <label for="edit-lname" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="edit-lname">
                 </div>
                 <label for="lname" class="form-label">Class</label>
                 <select class="form-select" id="edit-class">
-                  
+
                 </select>
                 <div class="mb-3">
-                  <label for="edit-city" class="form-label">City</label>
-                  <input type="text" class="form-control" id="edit-city">
+                    <label for="edit-city" class="form-label">City</label>
+                    <input type="text" class="form-control" id="edit-city">
                 </div>
                 <div class="mb-3">
                     <button type="button" class="btn btn-primary" onclick="modify_data()" id="update_data">Update</button>
@@ -138,26 +137,28 @@
             <div id="close-btn" onClick="hide_modal()">X</div>
         </div>
     </div>
+
+    <!-- modal for show data  -->
     
     <div id="viewModal">
         <div id="modal-form">
             <h2 class="text-center text-decoration-underline">View Form</h2>
             <form method="POST">
                 <div class="mb-3">
-                  <label for="view-fname" class="form-label">First Name</label>
+                    <label for="view-fname" class="form-label">First Name</label>
                     <input type="text" class="form-control" id="view-fname" readonly>
                 </div>
                 <div class="mb-3">
-                  <label for="view-lname" class="form-label">Last Name</label>
-                  <input type="text" class="form-control" id="view-lname" readonly>
+                    <label for="view-lname" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="view-lname" readonly>
                 </div>
                 <label for="view-class" class="form-label">Class</label>
                 <select class="form-select" id="view-class">
-                  
+
                 </select>
                 <div class="mb-3">
-                  <label for="view-city" class="form-label">City</label>
-                  <input type="text" class="form-control" id="view-city" readonly>
+                    <label for="view-city" class="form-label">City</label>
+                    <input type="text" class="form-control" id="view-city" readonly>
                 </div>
                 <div class="mb-3">
                     <button type="button" class="btn btn-danger" onclick="hide_modal()" id="close_btn">Close</button>
@@ -177,6 +178,8 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="./js/app.js" type="text/javascript"></script>
 </body>
+
 </html>
